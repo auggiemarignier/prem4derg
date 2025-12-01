@@ -3,21 +3,21 @@ name = "prem4derg"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 dependencies = [
-    "numpy>=2.3.5",
-    "scipy>=1.16.3",
+    "numpy",
+    "scipy",
 ]
 
 [dependency-groups]
 dev = [
-    "pytest>=9.0.1",
-    "pytest-cov>=7.0.0",
+    "pytest",
+    "pytest-cov",
 ]
 notebooks = [
-    "jupyter>=1.1.1",
-    "matplotlib>=3.10.7",
-    "obspy>=1.4.2",
+    "jupyter",
+    "matplotlib",
+    "obspy",
 ]
 
 [build-system]
