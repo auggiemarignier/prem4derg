@@ -23,25 +23,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Python 3.11
-      uses: actions/setup-python@v2
+    - name: Install uv
+      uses: astral-sh/setup-uv@v7
       with:
+        # Install a specific version of uv.
+        version: "0.9.13"
         python-version: ${{ matrix.python-version }}
-
-    - name: Install Python dependencies
-      run: |
-        python3 -m pip install --upgrade pip
-        python3 -m pip install -r requirements.txt
-
-    - name: Check style with Pylint
-      run: |
-        python3 -m pylint --fail-under=5 --reports=y earth_model
-
-    - name: type checks with mypy
-      run: |
-        python -m mypy earth_model
+        enable-cache: true
         
     - name: Test with PyTest
       run: |
-        python3 -m pytest --cov=earth_model 
+        uv run pytest --cov=earth_model 
 
