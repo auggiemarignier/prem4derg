@@ -8,7 +8,7 @@ mineos).
 import numpy as np
 import numpy.testing as npt
 
-from premlike import PREM
+from premlike import PREM, tabulate_model
 
 def test_tabulate_inwards():
     """
@@ -25,7 +25,7 @@ def test_tabulate_inwards():
     expect_qkappa = np.array([57823.0, 57823.0, 57823.0, 57823.0, 57823.0, 57823.0, 57823.0])
     expect_qshear = np.array([600.0, 600.0, 600.0, 600.0, 600.0, 600.0, 600.0])
 
-    table = PREM.tabulate_model_inwards(20.0)
+    table = tabulate_model(PREM, 20.0, outwards=False)
     npt.assert_allclose(table.depth[0:7], expect_depth)
     npt.assert_allclose(table.radius[0:7], expect_radius)
     npt.assert_allclose(table.density[0:7], expect_density)
@@ -50,7 +50,7 @@ def test_tabulate_outwards():
     expect_qkappa = np.array([57823.0, 57823.0, 57823.0, 57823.0, 57823.0, 57823.0, 57823.0])
     expect_qshear = np.array([80.0, 600.0, 600.0, 600.0, 600.0, 600.0, 600.0])
 
-    table = PREM.tabulate_model_outwards(20.0)
+    table = tabulate_model(PREM, 20.0, outwards=True)
     npt.assert_allclose(table.depth[-8:-1], expect_depth)
     npt.assert_allclose(table.radius[-8:-1], expect_radius)
     npt.assert_allclose(table.density[-8:-1], expect_density)
@@ -58,3 +58,10 @@ def test_tabulate_outwards():
     npt.assert_allclose(table.vs[-8:-1], expect_vs)
     npt.assert_allclose(table.qkappa[-8:-1], expect_qkappa)
     npt.assert_allclose(table.qshear[-8:-1], expect_qshear)
+
+def test_tabulate_default():
+    # Check default is outwards
+    table = tabulate_model(PREM, 20.0, outwards=True)
+    table2 = tabulate_model(PREM, 20.0)
+    npt.assert_allclose(table.depth, table2.depth)
+    npt.assert_allclose(table.radius, table2.radius)
