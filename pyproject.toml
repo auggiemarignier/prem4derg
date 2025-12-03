@@ -1,7 +1,7 @@
 [project]
-name = "prem4derg"
-version = "0.1.0"
-description = "Add your description here"
+name = "premlike"
+version = "0.1.0a1" 
+description = "A PREMlike model"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [

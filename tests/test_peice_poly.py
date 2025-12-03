@@ -5,7 +5,7 @@ Test cases for PeicewisePolynomial class
 import numpy as np
 import numpy.testing as npt
 
-import prem4derg.peice_poly as pp
+import premlike.peice_poly as pp
 
 
 def test_constant():
