@@ -20,3 +20,6 @@ venv/
 
 # Notebooks
 .ipynb_checkpoints
+
+# UV lock file - don't store this for lib code
+uv.lock

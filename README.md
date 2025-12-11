@@ -1,25 +1,37 @@
-# prem4derg
+# premlike
 
-This is a python module and some example notebooks to allow us (the Deep Earth Research Group at Leeds) to play around with
+This is a python module and some example notebooks to work with
 PREM, a famous 1D model of the Earth's interior published by Dziewonski and Anderson in 1981.
+The module was initially created to allow the Deep Earth Research Group at Leeds the University
+of Leeds to run a summer project to look at the structure of the core but the code has subsequently
+been used for a number of other research projects.
 
-## Installation
+## Features and limitations
 
-This module relies on python (version 3), Numpy and Scipy. Examples are distributed as Jupyter notebooks, which need Jupyter
-and Matplotlib to run. Calculation of travel time curves (in the third example notebook) needs Obspy. Installation and managment
-of all these dependencies is most easily done in a conda environment. This can be done using the command:
+Premlike allows the creation and evaluation of models that are "like" PREM in terms of their
+parameterization. That is, the P- and S-wave velocity, density and attenuation 
+are described by piecewise polynomials. The module allows the calculation of the corresponding
+acceleration due to gravity, pressure, frequency dependent velocities and elastic moduli as
+a function of radius. These calculations are analytic (i.e. there is no numerical integration
+in the calculation of pressure). The module can easily be used to generate input for Obspy's
+TauPy module for the calculation of travel times, and for Mineos for the calculation of e.g.
+normal mode center frequencies. 
 
-    conda create -n p4d -c conda-forge python=3.7 obspy scipy numpy matplotlib jupyter
-   
-This creates a new environment called `p4d`. Once an environment is created, this module can be downloaded by running:
+Currently, Premlike does not support radial anisotropy although adding this is planned
+(however, note that TauPy does not currently support such models either). In addition,
+the creation of complete documentation and a more robust set of tests is ongoing.
 
-    git clone https://github.com/andreww/prem4derg.git
-    
-This creates a directory called `prem4derg`. Experianced users of git who want to contribute to the code may want to fork this
+## Installation and use
+
+This module relies on python (version 3) and Numpy. The software can 
+be installed with `pip install premlike` 
+
+Examples are distributed as Jupyter notebooks, which need Jupyter
+and Matplotlib to run.
+Calculation of travel time curves (in the third example notebook) needs Obspy.
+
+Experienced users of git who want to contribute to the code may want to fork this
 repository in github and clone from their fork.
-
-Two final steps will need to be done each time you want to use the code. These are to change directory into the `prem4derg` directory,
-and activate the `p4d` environemnt by running `source activate p4d`.
 
 ### Mineos
 
@@ -52,10 +64,10 @@ These examples are only starting point. For example, the code could be used to f
 
 ## Development and support
 
-Prem4derg is new software, bugs and rough edges may abound. Users who are interested in 
+Premlike is software under development, bugs and rough edges may abound. Users who are interested in 
 changing the code are encouraged to [create a fork on GitHub and submit 
 changes via pull requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests).
-Problems can be reported via [issues](https://github.com/andreww/prem4derg/issues), which also list areas
+Problems can be reported via [issues](https://github.com/andreww/premlike/issues), which also list areas
 where further development may be useful.
   
 
