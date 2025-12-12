@@ -37,8 +37,8 @@ jobs:
     - build
     runs-on: ubuntu-latest
     environment:
-      name: test-pypi
-      url: https://test.pypi.org/p/prem4derg  
+      name: pypi
+      url: https://pypi.org/p/premlike  
     permissions:
       id-token: write  
 
@@ -50,5 +50,3 @@ jobs:
         path: dist/
     - name: Publish distribution 
       uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e
-      with:
-        repository-url: https://test.pypi.org/legacy/
