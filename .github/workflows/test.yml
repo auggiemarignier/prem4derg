@@ -1,7 +1,21 @@
-name: CI
+name: test
 
-# We can specify which Github events will trigger a CI build
-on: push
+# Run testing - we can specify which Github events will trigger a CI build
+on:
+  push:
+    branches: [ main ]
+    paths:
+    - '**.py'
+    - '.github/workflows/test.yml'
+    - 'pyproject.toml'
+  pull_request:
+    branches: [ main ]
+    paths:
+    - '**.py'
+    - '.github/workflows/test.yml'
+    - 'pyproject.toml'
+
+permissions: {}
 
 # now define a single job 'build' (but could define more)
 jobs:
