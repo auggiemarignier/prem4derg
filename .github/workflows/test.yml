@@ -17,10 +17,10 @@ on:
 
 permissions: {}
 
-# now define a single job 'build' (but could define more)
+# now define a single job 'test' (but could define more)
 jobs:
 
-  build:
+  test:
 
     strategy:
       matrix:
